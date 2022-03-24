@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Responsive Design | 100 days of code</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header id="main-header">
+                <a id="logo" href="#">Logo Here</a>
+                <nav>
+                    <ul>
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                    </ul>
+                </nav>
+                <a class="menu-btn" href="#side-drawer">
+                    <span></span><span></span><span></span>
+                </a>
+            </header>
+
+            <aside id="side-drawer">
+                <header>
+                    <a class="menu-btn" href="#">
+                        <span></span><span></span><span></span>
+                    </a>
+                </header>
+                <nav>
+                    <ul>
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main>
+                <h1>Heading Here</h1>
+                <section id="latest-products">
+                    <ul class="food-items">
+                        <li class="food-item">
+                            <article>
+                                <img
+                                    src="./risotto.jpg"
+                                    alt="Delicious Rissotto with tiger prawns"
+                                />
+                                <div class="food-item-content">
+                                    <h2>Rissotto with tiger prawns</h2>
+                                    <a class="btn" href="#">Add to cart</a>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="food-item">
+                            <article>
+                                <img
+                                    src="./cheeseburgers.jpg"
+                                    alt="Classic cheeseburgers with fries"
+                                />
+                                <div class="food-item-content">
+                                    <h2>cheeseburgers</h2>
+                                    <a class="btn" href="#">Add to cart</a>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>

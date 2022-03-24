@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" name="theme" id="theme" />
+    <label for="theme">theme</label>
+    <div class="fullscreen">
+      <div class="container">
+        <form>
+          <h2>How can we help you?</h2>
+          <label for="user-name">Your Name:</label>
+          <input type="text" name="username" id="user-name" />
+
+          <label for="user-email">Your Email:</label>
+          <input type="email" name="email" id="user-email" />
+
+          <label for="user-number">Your Phone No:</label>
+          <input type="tel" name="tel" id="user-tel" />
+
+          <label for="user-number">Your Message:</label>
+          <textarea name="message" id="user-message" rows="6"></textarea>
+
+          <label for="user-number">How did you find us:</label>
+          <select name="find" id="user-find">
+            <option value="web">Web</option>
+            <option value="tv">TV</option>
+            <option value="friend">from a friend</option>
+          </select>
+
+          <h2>How should we reply?</h2>
+          <section>
+            <input
+              type="radio"
+              name="reply"
+              id="user-reply-phone"
+              value="phone"
+            /><label for="user-reply-phone">Call me </label>
+          </section>
+          <section>
+            <input
+              type="radio"
+              name="reply"
+              id="user-reply-email"
+              value="email"
+            /><label for="user-reply-email">Send me an email</label>
+          </section>
+
+          <section class="submit-button">
+            <button type="reset">Clear</button> <button>Submit</button>
+          </section>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

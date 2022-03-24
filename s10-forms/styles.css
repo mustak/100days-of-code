@@ -1,0 +1,126 @@
+:root {
+  --clr-primary-100: rgb(230, 218, 250);
+  --clr-primary-200: rgba(156, 121, 218, 1);
+  --clr-primary-400: rgb(132, 42, 216);
+  --clr-primary-600: rgb(74, 7, 138);
+  --clr-primary-800: rgb(33, 0, 65);
+
+  --clr-neutral-200: rgb(248 243 254);
+  --clr-neutral-400: rgb(229, 220, 233);
+  --clr-neutral-600: grey;
+  --clr-neutral-800: rgb(57, 56, 58);
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  /* background-color: rgb(229, 226, 235); */
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: var(--clr-primary-400);
+}
+h2 ~ h2 {
+  margin-top: 1rem;
+}
+
+#theme,
+#theme ~ label {
+  position: absolute;
+}
+
+#theme:checked ~ .fullscreen {
+  --clr-primary-100: red; /*rgb(230, 218, 250)*/
+  --clr-primary-200: rgba(156, 121, 218, 1);
+  --clr-primary-400: rgb(132, 42, 216);
+  --clr-primary-600: rgb(74, 7, 138);
+  --clr-primary-800: rgb(33, 0, 65);
+
+  --clr-neutral-200: rgb(248 243 254);
+  --clr-neutral-400: rgb(229, 220, 233);
+  --clr-neutral-600: grey;
+  --clr-neutral-800: rgb(57, 56, 58);
+}
+
+.fullscreen {
+  background: linear-gradient(
+      158deg,
+      var(--clr-primary-100) 0%,
+      var(--clr-primary-800) 91%
+    )
+    no-repeat;
+  padding: 10vh 0;
+}
+.container {
+  width: 90vw;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--clr-neutral-200);
+  /* background: linear-gradient(
+    158deg,
+    rgba(242, 235, 255, 1) 0%,
+    rgba(156, 121, 218, 1) 81%
+  ); */
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--clr-neutral-600);
+
+  font-size: 0.9rem;
+  border-radius: 4px;
+  /* outline: 1px solid green; */
+}
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-200);
+}
+button {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-200);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-inline-start: 1rem;
+}
+button[type='reset'] {
+  background-color: var(--clr-neutral-400);
+  color: black;
+  /* margin-inline-start: 10px; */
+}
+label {
+  margin-bottom: 0.2rem;
+  display: inline-block;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  width: initial;
+}
+input[type='radio'] + label {
+  margin-left: 0.5rem;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: flex-end;
+}
