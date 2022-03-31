@@ -4,6 +4,20 @@ body {
   color: rgb(38, 37, 39);
 }
 
+button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  /* color: rgb(36, 36, 36); */
+  background-color: rgb(140, 0, 255);
+  border: 1px solid rgb(140, 0, 255);
+  color: white;
+}
+button:hover {
+  background-color: rgb(111, 2, 201);
+  border: 1px solid rgb(111, 2, 201);
+}
 #main-header {
   background-image: radial-gradient(
     circle at 600px 0px,
@@ -15,17 +29,13 @@ body {
   text-align: center;
 }
 
-.btn {
-  padding: 0.5rem 1.5rem;
-  background-color: rgb(140, 0, 255);
-  border: 1px solid rgb(140, 0, 255);
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .btn-alt {
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid rgb(232 190 255);
   color: rgb(140, 0, 255);
+}
+
+.btn-alt:hover {
+  background-color: rgb(241, 227, 253);
+  border: 1px solid rgb(241, 227, 253);
 }
