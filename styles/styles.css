@@ -1,41 +1,41 @@
 body {
-  font-family: 'Red Hat Text', sans-serif;
-  background-color: rgb(247, 239, 247);
-  color: rgb(38, 37, 39);
+    font-family: 'Red Hat Text', sans-serif;
+    background-color: rgb(247, 239, 247);
+    color: rgb(38, 37, 39);
 }
 
 button {
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  /* color: rgb(36, 36, 36); */
-  background-color: rgb(140, 0, 255);
-  border: 1px solid rgb(140, 0, 255);
-  color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    /* color: rgb(36, 36, 36); */
+    background-color: rgb(140, 0, 255);
+    border: 1px solid rgb(140, 0, 255);
+    color: white;
 }
 button:hover {
-  background-color: rgb(111, 2, 201);
-  border: 1px solid rgb(111, 2, 201);
+    background-color: rgb(111, 2, 201);
+    border: 1px solid rgb(111, 2, 201);
 }
 #main-header {
-  background-image: radial-gradient(
-    circle at 600px 0px,
-    #570894 30%,
-    #320651 100%
-  );
-  color: rgb(245, 245, 245);
-  padding: 2rem 5%;
-  text-align: center;
+    background-image: radial-gradient(
+        circle at 600px 0px,
+        #570894 30%,
+        #320651 100%
+    );
+    color: rgb(245, 245, 245);
+    padding: 0.8rem 5%;
+    text-align: center;
 }
 
 .btn-alt {
-  background-color: transparent;
-  border: 1px solid rgb(232 190 255);
-  color: rgb(140, 0, 255);
+    background-color: transparent;
+    border: 1px solid rgb(232 190 255);
+    color: rgb(140, 0, 255);
 }
 
 .btn-alt:hover {
-  background-color: rgb(241, 227, 253);
-  border: 1px solid rgb(241, 227, 253);
+    background-color: rgb(241, 227, 253);
+    border: 1px solid rgb(241, 227, 253);
 }
