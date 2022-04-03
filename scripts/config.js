@@ -1,4 +1,3 @@
-let playerID;
 function openPlayerConfig(event) {
     // playerID = event.target.id;
     playerID = +event.target.dataset.playerid;
