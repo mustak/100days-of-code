@@ -9,7 +9,9 @@ const players = [
         symbol: 'O',
     },
 ];
+let activePlayer = 0;
 
+//UI elements
 const backdrop = document.getElementById('backdrop');
 const modal = document.getElementById('configuration-overlay');
 
@@ -22,6 +24,7 @@ const btnConfirm = document.getElementById('configConfirm');
 
 const btnStartGame = document.getElementById('btn-start-game');
 const canvasBoardGame = document.getElementById('active-game');
+const gameboard = document.getElementById('game-board');
 const statusMessage = document.getElementById('status');
 
 // Events
@@ -33,4 +36,18 @@ btnConfirm.addEventListener('click', handleConfirm);
 
 backdrop.addEventListener('click', handleCancel);
 
-btnStartGame.addEventListener('click', startNewGame);
+btnStartGame.addEventListener('click', handleStartNewGame);
+gameboard.addEventListener('click', handleUserSelection);
+
+// Status message functions
+let timeOutFunction;
+const TimeOutDuration = 5000;
+function showStatusMessage(message) {
+    statusMessage.textContent = message;
+
+    timeOutFunction = setTimeout(clearStatusMessgae, TimeOutDuration);
+}
+function clearStatusMessgae() {
+    statusMessage.textContent = '';
+    clearTimeout(timeOutFunction);
+}
