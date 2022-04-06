@@ -1,4 +1,5 @@
 let playerID;
+let activePlayer = 0;
 const players = [
     {
         name: '',
@@ -9,7 +10,12 @@ const players = [
         symbol: 'O',
     },
 ];
-let activePlayer = 0;
+
+const gameData = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+];
 
 //UI elements
 const backdrop = document.getElementById('backdrop');

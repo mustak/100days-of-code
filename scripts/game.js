@@ -10,13 +10,21 @@ function handleStartNewGame() {
 function handleUserSelection(event) {
     const clickedElement = event.target;
     const elmClicked = clickedElement.nodeName;
-    // console.dir(clickedElement.classList);
-    if (elmClicked === 'LI' && !clickedElement.classList.contains('disabled')) {
-        clickedElement.textContent = players[activePlayer].symbol;
-        clickedElement.classList.add('disabled');
-        swapPlayer();
-        showActivePlayerName();
+
+    const row = clickedElement.dataset.row;
+    const col = clickedElement.dataset.col;
+
+    if (elmClicked !== 'LI' || clickedElement.classList.contains('disabled')) {
+        showStatusMessage('Select an empty box.');
+        return;
     }
+
+    gameData[row][col] = activePlayer + 1;
+    console.log(gameData);
+    clickedElement.textContent = players[activePlayer].symbol;
+    clickedElement.classList.add('disabled');
+    swapPlayer();
+    showActivePlayerName();
 }
 
 function showGameBoard() {
