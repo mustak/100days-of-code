@@ -1,20 +1,21 @@
 function handleStartNewGame() {
-    if (validPlayerNames()) {
-        showGameBoard();
-    } else {
+    if (!validPlayerNames) {
         showStatusMessage('Enter valid player names.');
+        return;
     }
-    // showGameBoard();
+    showGameBoard();
+    showActivePlayerName();
 }
 
 function handleUserSelection(event) {
     const clickedElement = event.target;
     const elmClicked = clickedElement.nodeName;
-    console.dir(clickedElement.classList);
+    // console.dir(clickedElement.classList);
     if (elmClicked === 'LI' && !clickedElement.classList.contains('disabled')) {
         clickedElement.textContent = players[activePlayer].symbol;
         clickedElement.classList.add('disabled');
         swapPlayer();
+        showActivePlayerName();
     }
 }
 
@@ -32,4 +33,8 @@ function swapPlayer() {
     } else {
         activePlayer = 0;
     }
+}
+
+function showActivePlayerName() {
+    activePlayerName.textContent = players[activePlayer].name;
 }

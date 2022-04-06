@@ -26,6 +26,7 @@ const btnStartGame = document.getElementById('btn-start-game');
 const canvasBoardGame = document.getElementById('active-game');
 const gameboard = document.getElementById('game-board');
 const statusMessage = document.getElementById('status');
+const activePlayerName = document.getElementById('active-player-name');
 
 // Events
 btnPlayer1Edit.addEventListener('click', openPlayerConfig);
