@@ -1,12 +1,13 @@
 let playerID;
 let activePlayer = 0;
+let roundCount = 1;
 const players = [
     {
-        name: '',
+        name: '1',
         symbol: 'X',
     },
     {
-        name: '',
+        name: '2',
         symbol: 'O',
     },
 ];
