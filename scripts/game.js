@@ -1,8 +1,33 @@
+function initialiseGame() {
+    activePlayer = 0;
+    roundCount = 1;
+    gameData = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+    ];
+
+    gameOverCard.firstElementChild.innerHTML =
+        'You won, <span>&lt;player-name&gt;</span>!';
+    gameOverCard.style.display = 'none';
+
+    // empty gameboard
+    const allBoxes = document.querySelectorAll('#game-board li');
+    console.log(allBoxes);
+    allBoxes.forEach((box) => {
+        box.textContent = '';
+        box.classList.remove('disabled');
+    });
+    console.log(allBoxes);
+    // clickedElement.textContent = '';
+    // clickedElement.classList.remove('disabled');
+}
 function handleStartNewGame() {
-    // if (!validPlayerNames) {
-    //     showStatusMessage('Enter valid player names.');
-    //     return;
-    // }
+    if (!validPlayerNames()) {
+        showStatusMessage('Enter valid player names.');
+        return;
+    }
+    initialiseGame();
     showGameBoard();
     showActivePlayerName();
 }
@@ -23,8 +48,11 @@ function handleUserSelection(event) {
     clickedElement.textContent = players[activePlayer].symbol;
     clickedElement.classList.add('disabled');
 
-    console.log(checkGameOver());
     const winnerID = checkGameOver();
+
+    if (winnerID !== 0) {
+        gameOver(winnerID);
+    }
 
     roundCount++;
     swapPlayer();
@@ -93,4 +121,19 @@ function checkGameOver() {
     }
 
     return 0;
+}
+
+function gameOver(winnerID) {
+    canvasBoardGame.style.display = 'none';
+    gameOverCard.style.display = 'block';
+
+    const h2 = gameOverCard.firstElementChild;
+    const span = h2.firstElementChild;
+
+    if (winnerID > 0) {
+        const winnerName = players[winnerID - 1].name;
+        span.textContent = winnerName;
+    } else {
+        h2.textContent = `It's a draw!`;
+    }
 }

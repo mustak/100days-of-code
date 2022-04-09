@@ -8,12 +8,13 @@
     display: none;
     width: 90%;
     max-width: 40rem;
-    margin: auto;
+    margin: 2rem auto;
     padding: 1rem 2rem;
     background-color: rgb(50, 5, 87);
     color: white;
     box-shadow: 0 7px 10px -4px rgb(0 0 0 / 40%);
     border-radius: 4px;
+    text-align: center;
 }
 #game-over h2 {
     margin: 0.5rem;
