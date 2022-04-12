@@ -1,0 +1,4 @@
+{
+    "exec": "npm run dev",
+    "ignore": [".git", "node_modules/*", "public/*"]
+}

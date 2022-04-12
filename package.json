@@ -1,0 +1,29 @@
+{
+    "name": "100days-of-code",
+    "version": "1.0.0",
+    "description": "",
+    "private": "true",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mustak/100days-of-code.git"
+    },
+    "keywords": [],
+    "author": "mustak",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mustak/100days-of-code/issues"
+    },
+    "homepage": "https://github.com/mustak/100days-of-code#readme",
+    "dependencies": {
+        "express": "^4.17.3",
+        "helmet": "^5.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
