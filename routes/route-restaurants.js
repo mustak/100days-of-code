@@ -47,6 +47,7 @@ router
     })
     .post((req, res) => {
         const restaurant = req.body;
+        restaurant.id = faker.datatype.uuid();
         const restaurants = getRestaurants();
         restaurants.push(restaurant);
 
