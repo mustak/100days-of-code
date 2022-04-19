@@ -10,7 +10,7 @@ exports.get_index = (req, res, next) => {
 exports.post_index = (req, res, next) => {
     const { username } = req.body;
 
-    const filePath = path.join(__dirname, '..', 'usernames.json');
+    const filePath = path.join(__dirname, '..', 'data/usernames.json');
     const fileContent = fs.readFileSync(filePath);
     const fileData = JSON.parse(fileContent);
     fileData.push(username);
@@ -20,7 +20,7 @@ exports.post_index = (req, res, next) => {
 };
 
 exports.get_usernames = (req, res, next) => {
-    const filePath = path.join(__dirname, '..', 'usernames.json');
+    const filePath = path.join(__dirname, '..', 'data/usernames.json');
     const fileContent = fs.readFileSync(filePath);
     const fileData = JSON.parse(fileContent);
 

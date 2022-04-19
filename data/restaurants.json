@@ -1,0 +1,23 @@
+[
+    {
+        "name": "restaurant 1",
+        "address": "123 someroad, sometown",
+        "cuisine": "Indian",
+        "website": "https://www.example.com",
+        "description": "An excellent restaurant!"
+    },
+    {
+        "name": "restaurant 2",
+        "address": "123 someroad, sometown",
+        "cuisine": "Mexican",
+        "website": "https://www.example.com",
+        "description": "An excellent restaurant!"
+    },
+    {
+        "name": "restaurant 3",
+        "address": "123 someroad, sometown",
+        "cuisine": "Mexican",
+        "website": "https://www.example.com",
+        "description": "An excellent restaurant!"
+    }
+]

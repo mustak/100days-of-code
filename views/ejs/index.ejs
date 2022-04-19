@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('_head') %>
+        <link rel="stylesheet" href="/styles/index.css" />
+    </head>
+
+    <body>
+        <%- include('_header', links); %> <%- include('_side-drawer', links); %>
+        <main>
+            <h1>Make the world a tastier place!</h1>
+            <p>
+                Share your favorite restaurants or find recommendations of other
+                users!
+            </p>
+            <ul id="actions">
+                <li>
+                    <a href="<%= links.restaurants %>"
+                        >Browse Shared Restaurants</a
+                    >
+                </li>
+                <li>
+                    <a href="<%= links.recommend %>"
+                        >Share Your Favorite Restaurant</a
+                    >
+                </li>
+            </ul>
+        </main>
+    </body>
+</html>

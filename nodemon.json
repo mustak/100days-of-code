@@ -1,4 +1,4 @@
 {
     "exec": "npm run dev",
-    "ignore": [".git", "node_modules/*", "public/*"]
+    "ignore": [".git", "node_modules/*", "public/*", "restaurants.json", "usernames.json"]
 }

@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/mustak/100days-of-code#readme",
     "dependencies": {
+        "ejs": "^3.0.2",
         "express": "^4.17.3",
         "helmet": "^5.0.2"
     },
