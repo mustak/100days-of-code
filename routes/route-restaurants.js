@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { faker } = require('@faker-js/faker');
 const router = express.Router();
 
 let homeRoute = '/restaurants';
@@ -29,7 +30,14 @@ router.route('/browse').get((req, res) => {
 router
     .route('/recommend')
     .get((req, res) => {
-        res.render('recommend', { links: routeLinks });
+        const fakeData = {
+            name: faker.company.companyName(),
+            address: faker.address.streetAddress(),
+            cuisine: faker.address.country(),
+            website: faker.internet.url(),
+            description: faker.lorem.paragraph(),
+        };
+        res.render('recommend', { links: routeLinks, data: fakeData });
     })
     .post((req, res) => {
         const restaurant = req.body;
