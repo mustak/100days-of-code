@@ -15,14 +15,15 @@ main ul {
     margin: 3rem 0;
     padding: 0;
     display: flex;
+    justify-content: center;
 }
 
 main li {
     width: 20rem;
-    /* height: 10rem; */
+    height: 10rem;
     border-radius: 6px;
     margin: 0 1rem;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 main li a {
