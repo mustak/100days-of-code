@@ -15,7 +15,8 @@
             </p>
             <ul id="restaurants-list">
                 <% for(const restaurant of restaurants){%> <%-
-                include('_restaurant-item', {restaurant: restaurant}) %> <% } %>
+                include('_restaurant-item', {links: links, restaurant}) %> <% }
+                %>
             </ul>
         </main>
     </body>

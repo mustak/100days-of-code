@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('_head') %>
+    </head>
+
+    <body>
+        <%- include('_header', links); %> <%- include('_side-drawer', links); %>
+        <main>
+            <h1>TITLE OF RESTAURANT[<%= restaurantID %>]</h1>
+            <p>Cuisine | Address</p>
+            <p>Description of restaurant</p>
+            <p><a href="#">View Website</a></p>
+        </main>
+    </body>
+</html>

@@ -11,6 +11,7 @@ let routeLinks = {
     home: `${homeRoute}/`,
     recommend: `${homeRoute}/recommend`,
     restaurants: `${homeRoute}/browse`,
+    details: `${homeRoute}/browse`,
 };
 
 router.route('/').get((req, res) => {
@@ -25,6 +26,11 @@ router.route('/browse').get((req, res) => {
     const restaurants = getRestaurants();
 
     res.render('restaurants', { links: routeLinks, restaurants });
+});
+
+router.route('/browse/:id').get((req, res) => {
+    const rID = req.params.id;
+    res.render('restaurant-details', { links: routeLinks, restaurantID: rID });
 });
 
 router
@@ -76,6 +82,7 @@ module.exports = function setRoute(route) {
         home: `${homeRoute}/`,
         recommend: `${homeRoute}/recommend`,
         restaurants: `${homeRoute}/browse`,
+        details: `${homeRoute}/browse`,
     };
     return router;
 };

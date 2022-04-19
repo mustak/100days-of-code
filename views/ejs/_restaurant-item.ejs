@@ -7,7 +7,9 @@
         </div>
         <p><%= restaurant.description %></p>
         <div class="restaurant-actions">
-            <a href="<%= restaurant.website %>">View Restaurant</a>
+            <a href="<%= `${links.details}/${restaurant.name}` %>"
+                >View Restaurant</a
+            >
         </div>
     </article>
 </li>
