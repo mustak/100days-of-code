@@ -30,7 +30,13 @@ router.route('/browse').get((req, res) => {
 
 router.route('/browse/:id').get((req, res) => {
     const rID = req.params.id;
-    res.render('restaurant-details', { links: routeLinks, restaurantID: rID });
+    const restaurants = getRestaurants();
+    const restaurant = restaurants.find((restaurant) => restaurant.id === rID);
+    if (restaurant) {
+        res.render('restaurant-details', { links: routeLinks, restaurant });
+    } else {
+        res.render('404', { links: routeLinks });
+    }
 });
 
 router
@@ -63,6 +69,14 @@ router
 
 router.route('/confirm').get((req, res) => {
     res.render('confirm', { links: routeLinks });
+});
+
+router.use(function (req, res, next) {
+    // console.log('##' + err + '##');
+    res.render('error', {
+        links: routeLinks,
+        title: 'The resource requested cannot be found.',
+    });
 });
 
 // module.exports = router;

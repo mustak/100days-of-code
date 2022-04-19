@@ -27,6 +27,15 @@ app.set('view engine', 'ejs');
 app.use('/', routerUsernames);
 app.use('/restaurants', routerRestaurants('/restaurants'));
 
+// app.use(function (err, req, res, next) {
+//     console.log(`app.js:32: ${err}`);
+//     if (res.headersSent) {
+//         return next(err);
+//     } else {
+//         res.json({ status: 'Error', message: 'error message', error: err });
+//     }
+// });
+
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
 });
