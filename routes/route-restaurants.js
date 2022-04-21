@@ -71,11 +71,24 @@ router.route('/confirm').get((req, res) => {
     res.render('confirm', { links: routeLinks });
 });
 
+/**
+ * Error handlers
+ */
 router.use(function (req, res, next) {
     // console.log('##' + err + '##');
-    res.render('error', {
+    res.render('404', {
         links: routeLinks,
-        title: 'The resource requested cannot be found.',
+        title: `The resource requested cannot be found. [${homeRoute}]`,
+    });
+});
+
+router.use(function (err, req, res, next) {
+    if (res.headersSent) {
+        return next(err);
+    }
+    res.status(500).render('500', {
+        links: routeLinks,
+        title: `Server Error. ${err}`,
     });
 });
 
@@ -84,7 +97,7 @@ router.use(function (req, res, next) {
 // exports.router = router;
 
 function getRestaurants() {
-    const filePath = path.join(__dirname, '..', 'data/restaurants.json');
+    const filePath = path.join(__dirname, '..', 'data/restaurantsx.json');
     const fileContent = fs.readFileSync(filePath);
     return JSON.parse(fileContent);
 }

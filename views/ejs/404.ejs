@@ -2,12 +2,15 @@
 <html lang="en">
     <head>
         <%- include('_head') %>
+        <link rel="stylesheet" href="/styles/error.css" />
     </head>
 
     <body>
-        <%- include('_header', links); %> <%- include('_side-drawer', links); %>
+        <% if(links){ %> <%- include('_header', links); %> <%-
+        include('_side-drawer', links); %> <% } %>
         <main>
-            <h1>Page not found!</h1>
+            <h1 class="error">Page not found!</h1>
+            <h2><%= title %></h2>
             <p>Unfortunately, we weren't able to find this page.</p>
         </main>
     </body>

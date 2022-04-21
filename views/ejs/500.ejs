@@ -2,14 +2,15 @@
 <html lang="en">
     <head>
         <%- include('_head') %>
+        <link rel="stylesheet" href="/styles/error.css" />
     </head>
 
     <body>
         <%- include('_header', links); %> <%- include('_side-drawer', links); %>
         <main>
-            <h1>An error occured!</h1>
+            <h1 class="error">A server error occured!</h1>
             <h2><%= title %></h2>
-            <p>Unfortunately, we weren't able to find this page.</p>
+            <p>Unfortunately, we weren't able to complete your request.</p>
         </main>
     </body>
 </html>
