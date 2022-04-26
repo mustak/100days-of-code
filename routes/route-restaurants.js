@@ -25,6 +25,8 @@ router.route('/about').get((req, res) => {
 router.route('/browse').get((req, res) => {
     const restaurants = getRestaurants();
 
+    restaurants.sort((a, b) => (a > b ? 1 : -1));
+
     res.render('restaurants', { links: routeLinks, restaurants });
 });
 
@@ -97,7 +99,7 @@ router.use(function (err, req, res, next) {
 // exports.router = router;
 
 function getRestaurants() {
-    const filePath = path.join(__dirname, '..', 'data/restaurantsx.json');
+    const filePath = path.join(__dirname, '..', 'data/restaurants.json');
     const fileContent = fs.readFileSync(filePath);
     return JSON.parse(fileContent);
 }
