@@ -28,13 +28,13 @@ app.use('/', routerUsernames);
 app.use('/restaurants', routerRestaurants('/restaurants'));
 
 app.use(function (req, res, next) {
-    res.render('404', {
+    res.render('restaurants/404', {
         links: null,
         title: 'The resource requested cannot be found. [/]',
     });
 });
 app.use(function (err, req, res, next) {
-    console.log(`app.js:32: ${err}`);
+    console.log(`app.js:37: ${err}`);
     if (res.headersSent) {
         return next(err);
     } else {

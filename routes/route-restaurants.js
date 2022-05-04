@@ -15,11 +15,11 @@ let routeLinks = {
 };
 
 router.route('/').get((req, res) => {
-    res.render('index', { links: routeLinks });
+    res.render('restaurants/index', { links: routeLinks });
 });
 
 router.route('/about').get((req, res) => {
-    res.render('about', { links: routeLinks });
+    res.render('restaurants/about', { links: routeLinks });
 });
 
 router.route('/browse').get((req, res) => {
@@ -27,7 +27,7 @@ router.route('/browse').get((req, res) => {
 
     restaurants.sort((a, b) => (a > b ? 1 : -1));
 
-    res.render('restaurants', { links: routeLinks, restaurants });
+    res.render('restaurants/restaurants', { links: routeLinks, restaurants });
 });
 
 router.route('/browse/:id').get((req, res) => {
@@ -35,9 +35,12 @@ router.route('/browse/:id').get((req, res) => {
     const restaurants = getRestaurants();
     const restaurant = restaurants.find((restaurant) => restaurant.id === rID);
     if (restaurant) {
-        res.render('restaurant-details', { links: routeLinks, restaurant });
+        res.render('restaurants/restaurant-details', {
+            links: routeLinks,
+            restaurant,
+        });
     } else {
-        res.render('404', { links: routeLinks });
+        res.render('restaurants/404', { links: routeLinks });
     }
 });
 
@@ -51,7 +54,10 @@ router
             website: faker.internet.url(),
             description: faker.lorem.paragraph(),
         };
-        res.render('recommend', { links: routeLinks, data: fakeData });
+        res.render('restaurants/recommend', {
+            links: routeLinks,
+            data: fakeData,
+        });
     })
     .post((req, res) => {
         const restaurant = req.body;
@@ -70,7 +76,7 @@ router
     });
 
 router.route('/confirm').get((req, res) => {
-    res.render('confirm', { links: routeLinks });
+    res.render('restaurants/confirm', { links: routeLinks });
 });
 
 /**
@@ -78,7 +84,7 @@ router.route('/confirm').get((req, res) => {
  */
 router.use(function (req, res, next) {
     // console.log('##' + err + '##');
-    res.render('404', {
+    res.render('restaurants/404', {
         links: routeLinks,
         title: `The resource requested cannot be found. [${homeRoute}]`,
     });
@@ -88,7 +94,7 @@ router.use(function (err, req, res, next) {
     if (res.headersSent) {
         return next(err);
     }
-    res.status(500).render('500', {
+    res.status(500).render('restaurants/500', {
         links: routeLinks,
         title: `Server Error. ${err}`,
     });
