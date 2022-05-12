@@ -9,6 +9,16 @@
         <%- include('includes/header', links) %>
         <main id="all-posts">
             <h1>All Posts</h1>
+
+            <% if( posts.length <=0) { %>
+                <h2>No entries</h2>
+            <% } else { %> 
+            
+                <% posts.forEach(post=> { %> 
+                
+                    <%- include('includes/post-item', {post}) %> 
+                <% }); %> 
+            <% } %>
         </main>
     </body>
 </html>

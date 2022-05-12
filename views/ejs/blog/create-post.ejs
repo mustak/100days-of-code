@@ -9,7 +9,7 @@
         <%- include('includes/header', links) %>
         <main>
             <h1>Add a new post</h1>
-            <form action="..." method="...">
+            <form action="<%= links.posts %>" method="POST">
                 <div class="form-control">
                     <label for="title">Title</label>
                     <input
@@ -40,7 +40,11 @@
                 <div class="form-control">
                     <label for="author">Select Author</label>
                     <select id="author" name="author">
-                        ...
+                        <% data.authors.forEach(author => { %>
+                        <option value="<%= author.id %>">
+                            <%= author.name %> [<%= author.email %>]
+                        </option>
+                        <% }); %>
                     </select>
                 </div>
                 <button class="btn">Add Post</button>

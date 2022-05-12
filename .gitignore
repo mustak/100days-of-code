@@ -1,5 +1,6 @@
 ### Local ###
 node_modules
+.env
 
 ### VisualStudioCode ###
 .vscode/*
