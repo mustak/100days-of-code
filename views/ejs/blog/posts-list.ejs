@@ -13,11 +13,13 @@
             <% if( posts.length <=0) { %>
                 <h2>No entries</h2>
             <% } else { %> 
-            
+            <ol id='posts-list'>
                 <% posts.forEach(post=> { %> 
                 
-                    <%- include('includes/post-item', {post}) %> 
+                    <li><%- include('includes/post-item', {post}) %></li>
                 <% }); %> 
+
+            </ol>
             <% } %>
         </main>
     </body>

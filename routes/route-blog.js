@@ -15,7 +15,10 @@ let routeLinks = {
 router
     .route(['/', '/posts'])
     .get((req, res, next) => {
-        const query = `SELECT p.*, a.name AS author_name, a.email AS author_email FROM posts AS p INNER JOIN authors AS a ON p.author_id = a.id`;
+        const query = `
+        SELECT p.*, a.name AS author_name, a.email AS author_email 
+        FROM posts AS p INNER JOIN authors AS a ON p.author_id = a.id
+        ORDER BY p.date DESC`;
 
         db.query(query)
             .then(([result]) => {
