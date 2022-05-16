@@ -55,11 +55,39 @@ router.route('/new-post').get(async (req, res) => {
     res.render('blog/create-post', { links: routeLinks, data: fakeData });
 });
 
+router.route('/posts/:id').get((req, res, next) => {
+    const id = req.params.id;
+    const query = `
+    SELECT posts.*, authors.name AS author_name, authors.email AS author_email
+    FROM posts 
+        INNER JOIN authors 
+        ON posts.author_id = authors.id
+    WHERE posts.id = ?
+    `;
+    db.query(query, [id])
+        .then(([result]) => {
+            if (!result || result.length <= 0) {
+                return res.status(404).render('blog/404', {
+                    links: routeLinks,
+                    title: `The resource requested cannot be found. [${homeRoute}]`,
+                });
+            }
+
+            res.render('blog/post-detail', {
+                links: routeLinks,
+                post: result[0],
+            });
+        })
+        .catch((err) => {
+            next(err);
+        });
+});
+
 /**
  * Error handlers
  */
 router.use(function (req, res, next) {
-    // console.log('##' + err + '##');
+    console.log(`>> Error for following request: ${req.originalUrl}`);
     res.status(404).render('blog/404', {
         links: routeLinks,
         title: `The resource requested cannot be found. [${homeRoute}]`,
