@@ -9,10 +9,20 @@
         <%- include('includes/header', links) %>
         <main>
             <h1>Update post</h1>
-            <form action="..." method="...">
+            <form action="<%=`${links.posts}/${post.id}/edit`%>" method="POST">
+                <div class="form-control">
+                    <label for="author_id">Author</label>
+                    <select name="author_id" id="author_id">
+                        <% authors.forEach(author => {%>
+                            <option value="<%=author.id%>" <%= (post.author_id === author.id) ? 'selected': null%>><%=author.name%></option>
+                            
+                        <%})%>
+                    </select>
+                    
+                </div>
                 <div class="form-control">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required />
+                    <input type="text" id="title" name="title" value='<%= post.title %>' required />
                 </div>
                 <div class="form-control">
                     <label for="summary">Summary</label>
@@ -20,6 +30,7 @@
                         type="text"
                         id="summary"
                         name="summary"
+                        value='<%=post.summary%>'
                         required
                         maxlength="255"
                     />
@@ -31,7 +42,7 @@
                         name="content"
                         required
                         rows="5"
-                    ></textarea>
+                    ><%=post.body%></textarea>
                 </div>
                 <button class="btn">Update Post</button>
             </form>

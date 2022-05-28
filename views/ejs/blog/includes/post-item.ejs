@@ -5,8 +5,8 @@
     <p><%= post.summary %></p>
     
     <div class="post-actions">
-        <button class="btn btn-alt">Delete Post</button>
-        <a href="...">Edit Post</a>
+        <form action="<%=`${links.posts}/${post.id}/delete`%>" method='post'><button class="btn btn-alt">Delete Post</button></form>
+        <a href="<%=`${links.posts}/${post.id}/edit`%>">Edit Post</a>
         <a class="btn" href="<%= `${links.posts}/${post.id}` %>">View Post</a>
     </div>
 </article>

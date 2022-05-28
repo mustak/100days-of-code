@@ -48,7 +48,7 @@ router.route('/new-post').get(async (req, res) => {
 
     const fakeData = {
         title: faker.lorem.sentence(),
-        summary: faker.lorem.sentences(),
+        summary: faker.lorem.sentence(7),
         content: faker.lorem.paragraphs(),
         authors,
     };
@@ -82,6 +82,72 @@ router.route('/posts/:id').get((req, res, next) => {
             next(err);
         });
 });
+
+router
+    .route('/posts/:id/edit')
+    .get((req, res, next) => {
+        const id = req.params.id;
+
+        const queryPosts = `
+            SELECT id, title, summary, body, author_id
+            FROM posts
+            WHERE id=?
+        `;
+
+        const queryAuthors = `
+            SELECT id, name FROM authors
+        `;
+
+        Promise.all([db.query(queryPosts, [id]), db.query(queryAuthors)])
+            .then(([[post], [authors]]) => {
+                // console.log(post[0], authors);
+                res.render('blog/update-post', {
+                    links: routeLinks,
+                    post: post[0],
+                    authors,
+                });
+            })
+            .catch((err) => next(err));
+    })
+    .post(async (req, res, next) => {
+        const id = req.params.id;
+        const { author_id, title, summary, content } = req.body;
+
+        const query = `
+            UPDATE posts 
+            SET 
+                title=?, 
+                summary=?, 
+                body=?,
+                author_id=?
+            WHERE id=?
+        `;
+
+        try {
+            await db.query(query, [title, summary, content, author_id, id]);
+            res.redirect(routeLinks.home);
+        } catch (err) {
+            next(err);
+        }
+
+        // res.send('posted data. see console.');
+    });
+
+router.route('/posts/:id/delete').post(async (req, res) => {
+    const postID = req.params.id;
+
+    const query = `
+        DELETE FROM posts 
+        WHERE id=?
+    `;
+
+    try {
+        await db.query(query, [postID]);
+        res.redirect(routeLinks.home);
+    } catch (error) {
+        next(error);
+    }
+}); // end get;
 
 /**
  * Error handlers
