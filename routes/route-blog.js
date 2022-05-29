@@ -5,6 +5,9 @@ const { faker } = require('@faker-js/faker');
 const db = require('../data/db-mysql');
 const router = express.Router();
 
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
 let homeRoute = '/blog';
 let routeLinks = {
     home: `${homeRoute}/`,
@@ -14,23 +17,29 @@ let routeLinks = {
 
 router
     .route(['/', '/posts'])
-    .get((req, res, next) => {
-        const query = `
-        SELECT p.*, a.name AS author_name, a.email AS author_email 
-        FROM posts AS p INNER JOIN authors AS a ON p.author_id = a.id
-        ORDER BY p.date DESC`;
+    .get(async (req, res, next) => {
+        try {
+            const posts = await prisma.post.findMany({
+                select: {
+                    id: true,
+                    title: true,
+                    summary: true,
+                    date: true,
+                    author: {
+                        select: {
+                            name: true,
+                        },
+                    },
+                },
+            }); // findMany
 
-        db.query(query)
-            .then(([result]) => {
-                // console.log(result);
-                res.render('blog/posts-list', {
-                    links: routeLinks,
-                    posts: result,
-                });
-            })
-            .catch((err) => {
-                next(err);
+            res.render('blog/posts-list', {
+                links: routeLinks,
+                posts: posts,
             });
+        } catch (error) {
+            next(error);
+        }
     })
     .post(async (req, res) => {
         const { title, summary, content, author } = req.body;
