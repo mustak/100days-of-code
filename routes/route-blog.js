@@ -31,6 +31,7 @@ router
                         },
                     },
                 },
+                orderBy: [{ date: 'desc' }],
             }); // findMany
 
             res.render('blog/posts-list', {
@@ -43,13 +44,23 @@ router
     })
     .post(async (req, res) => {
         const { title, summary, content, author } = req.body;
-        const data = [title, summary, content, author];
-        const [result, fields] = await db.query(
-            'INSERT INTO posts (title,summary,body,author_id) VALUES (?)',
-            [data]
-        );
-        // res.send('added');
-        res.redirect(routeLinks.home);
+
+        try {
+            const result = await prisma.post.create({
+                data: {
+                    body: content,
+                    summary,
+                    title,
+                    author: {
+                        connect: { id: +author },
+                    },
+                },
+            });
+
+            res.redirect(routeLinks.home);
+        } catch (error) {
+            next(error);
+        }
     });
 
 router.route('/new-post').get(async (req, res) => {
