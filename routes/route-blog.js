@@ -51,9 +51,10 @@ router
                     body: content,
                     summary,
                     title,
-                    author: {
-                        connect: { id: +author },
-                    },
+                    author_id: +author,
+                    // author: {
+                    //     connect: { id: +author },
+                    // },
                 },
             });
 
