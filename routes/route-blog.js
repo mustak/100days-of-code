@@ -78,32 +78,35 @@ router.route('/new-post').get(async (req, res) => {
     res.render('blog/create-post', { links: routeLinks, data: fakeData });
 });
 
-router.route('/posts/:id').get((req, res, next) => {
+router.route('/posts/:id').get(async (req, res, next) => {
     const id = req.params.id;
-    const query = `
-    SELECT posts.*, authors.name AS author_name, authors.email AS author_email
-    FROM posts 
-        INNER JOIN authors 
-        ON posts.author_id = authors.id
-    WHERE posts.id = ?
-    `;
-    db.query(query, [id])
-        .then(([result]) => {
-            if (!result || result.length <= 0) {
-                return res.status(404).render('blog/404', {
-                    links: routeLinks,
-                    title: `The resource requested cannot be found. [${homeRoute}]`,
-                });
-            }
 
-            res.render('blog/post-detail', {
-                links: routeLinks,
-                post: result[0],
-            });
-        })
-        .catch((err) => {
-            next(err);
+    try {
+        const post = await prisma.post.findUnique({
+            select: {
+                id: true,
+                title: true,
+                body: true,
+                date: true,
+                author: {
+                    select: {
+                        name: true,
+                        email: true,
+                    },
+                },
+            },
+            where: {
+                id: +id,
+            },
+        }); // findMany
+        console.log(post);
+        res.render('blog/post-detail', {
+            links: routeLinks,
+            post,
         });
+    } catch (error) {
+        next(error);
+    }
 });
 
 router
