@@ -51,7 +51,9 @@ router
                     body: content,
                     summary,
                     title,
+                    // either
                     author_id: +author,
+                    // or
                     // author: {
                     //     connect: { id: +author },
                     // },
@@ -65,7 +67,7 @@ router
     });
 
 router.route('/new-post').get(async (req, res) => {
-    const [authors] = await db.query('SELECT * FROM authors');
+    const authors = await prisma.author.findMany();
 
     const fakeData = {
         title: faker.lorem.sentence(),
