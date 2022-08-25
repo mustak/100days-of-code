@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('includes/head', { title: 'All Posts' }) %>
+        <link rel="stylesheet" href="/blog/styles/posts.css" />
+    </head>
+
+    <body>
+        <%- include('includes/header', links) %>
+        <main id="all-posts">
+            <h1>All Posts</h1>
+
+            <% if( posts.length <=0) { %>
+                <h2>No entries</h2>
+            <% } else { %> 
+            <ol id='posts-list'>
+                <% posts.forEach(post=> { %> 
+                
+                    <li><%- include('includes/post-item', {post}) %></li>
+                <% }); %> 
+
+            </ol>
+            <% } %>
+        </main>
+    </body>
+</html>
