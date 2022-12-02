@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <%- include('includes/head', { title: 'Not found!' }) %>
+        <%- include('includes/head', { title: title ||'Not found!' }) %>
     </head>
 
     <body>
@@ -9,6 +9,7 @@
         <main>
             <h1>We could not find this resource!</h1>
             <p>Unfortunately, we were not able to find this resource.</p>
+            <p><%= title %></p>
             <a class="btn" href="/">Back To Safety!</a>
         </main>
     </body>

@@ -25,6 +25,7 @@
         "ejs": "^3.0.2",
         "express": "^4.17.3",
         "helmet": "^5.0.2",
+        "mongodb": "4.9",
         "mysql2": "^2.3.3"
     },
     "devDependencies": {

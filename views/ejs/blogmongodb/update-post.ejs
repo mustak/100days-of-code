@@ -9,12 +9,12 @@
         <%- include('includes/header', links) %>
         <main>
             <h1>Update post</h1>
-            <form action="<%=`${links.posts}/${post.id}/edit`%>" method="POST">
+            <form action="<%=`${links.posts}/${post._id}/edit`%>" method="POST">
                 <div class="form-control">
                     <label for="author_id">Author</label>
                     <select name="author_id" id="author_id">
                         <% authors.forEach(author => {%>
-                            <option value="<%=author.id%>" <%= (post.author_id === author.id) ? 'selected': null%>><%=author.name%></option>
+                            <option value="<%=author._id%>" <%= (post.author._id.toString() === author._id.toString()) ? 'selected': null%>><%=author.name %></option>
                             
                         <%})%>
                     </select>
@@ -42,7 +42,7 @@
                         name="content"
                         required
                         rows="5"
-                    ><%=post.body%></textarea>
+                    ><%=post.content%></textarea>
                 </div>
                 <button class="btn">Update Post</button>
             </form>

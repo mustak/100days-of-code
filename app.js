@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 
+const db = require('./data/db-mongodb');
+
 const routerUsernames = require('./routes/route-usernames');
 const routerRestaurants = require('./routes/route-restaurants');
 const routerBlog = require('./routes/route-blog');
@@ -46,6 +48,12 @@ app.use(function (err, req, res, next) {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Listening on port: ${PORT}`);
+db.openDb().then(function () {
+    console.log('DB connection opened!!!');
+    app.listen(PORT, () => {
+        console.log(`Listening on port: ${PORT}`);
+    }).on('close', function () {
+        console.log('[app.js] server closing db connection.');
+        db.closeDb();
+    });
 });
