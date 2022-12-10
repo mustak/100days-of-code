@@ -28,28 +28,14 @@ router
     .get(cntblog.get_postEdit)
     .post(cntblog.post_postEdit);
 
-router.route('/posts/:id/delete').post(async (req, res) => {
-    const postID = req.params.id;
-
-    const query = `
-        DELETE FROM posts 
-        WHERE id=?
-    `;
-
-    try {
-        await db.query(query, [postID]);
-        res.redirect(routeLinks.home);
-    } catch (error) {
-        next(error);
-    }
-}); // end get;
+router.route('/posts/:id/delete').post(cntblog.post_delete); // end get;
 
 /**
  * Error handlers
  */
 router.use(function (req, res, next) {
     console.log(`>> Error for following request: ${req.originalUrl}`);
-    res.status(404).render('blog/404', {
+    res.status(404).render('blogmongodb/404', {
         links: routeLinks,
         title: `The resource requested cannot be found. [${homeRoute}]`,
     });
@@ -60,7 +46,7 @@ router.use(function (err, req, res, next) {
         return next(err);
     }
     console.log(err);
-    res.status(500).render('blog/500', {
+    res.status(500).render('blogmongodb/500', {
         links: routeLinks,
         title: `Server Error: ${err}`,
     });

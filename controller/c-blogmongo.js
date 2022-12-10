@@ -165,6 +165,27 @@ exports.post_postEdit = async (req, res, next) => {
     res.redirect(routeLinks.home);
 };
 
+exports.post_delete = async (req, res, next) => {
+    // next('test delete');
+    const urlPostID = req.params.id;
+    if (!urlPostID) {
+        return localError(
+            res,
+            `The resource requested cannot be found. [post_postDelete: no id sent.]`
+        );
+    }
+
+    const postID = new ObjectId(req.params.id);
+
+    try {
+        await db.getDb().collection('posts').deleteOne({ _id: postID });
+
+        res.redirect(routeLinks.home);
+    } catch (error) {
+        return localError(res, `Error deleteing post. [post_postDelete]`);
+    }
+};
+
 function localError(res, title = `The resource requested cannot be found.`) {
     return res.status(404).render('blogmongodb/404', {
         links: routeLinks,
