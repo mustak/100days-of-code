@@ -1,0 +1,22 @@
+ul#users {
+}
+
+ul#users li {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff1c;
+    margin: 5px;
+    padding: 5px;
+}
+
+/* ul#users li .avatar {
+    width: 5rem;
+    height: 5rem;
+} */
+
+ul#users li img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    object-position: 50% 50%;
+}

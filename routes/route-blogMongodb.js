@@ -1,12 +1,7 @@
-const fs = require('fs');
-const path = require('path');
 const express = require('express');
 
 const cntblog = require('../controller/c-blogmongo');
 
-const { faker } = require('@faker-js/faker');
-const db = require('../data/db-mongodb');
-const ObjectId = require('mongodb').ObjectId;
 const router = express.Router();
 
 let homeRoute = '/blog';

@@ -8,6 +8,7 @@ const routerUsernames = require('./routes/route-usernames');
 const routerRestaurants = require('./routes/route-restaurants');
 const routerBlog = require('./routes/route-blog');
 const routerBlogMongodb = require('./routes/route-blogMongodb');
+const routeFileUploads = require('./routes/route-fileuploads');
 
 const PORT = 3000;
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(helmet()); //set security-related HTTP response headers
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.set('views', path.join(__dirname, 'views/ejs'));
 app.set('view engine', 'ejs');
@@ -32,6 +34,7 @@ app.use('/', routerUsernames);
 app.use('/restaurants', routerRestaurants('/restaurants'));
 app.use('/blog', routerBlog('/blog'));
 app.use('/blogmongodb', routerBlogMongodb('/blogmongodb'));
+app.use('/fileuploads/', routeFileUploads);
 
 app.use(function (req, res, next) {
     res.render('restaurants/404', {
