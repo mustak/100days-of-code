@@ -1,4 +1,6 @@
 const express = require('express');
+const db = require('../data/db-mongodb');
+const ObjectId = require('mongodb').ObjectId;
 
 const cntblog = require('../controller/c-blogmongo');
 
@@ -24,6 +26,46 @@ router
     .post(cntblog.post_postEdit);
 
 router.route('/posts/:id/delete').post(cntblog.post_delete); // end get;
+
+/***
+ * Comments routes
+ */
+router.get('/posts/:id/comments', async function (req, res) {
+    if (!req.params.id) {
+        return res.status(404).json({
+            message: 'The requested resource cannot be found on the server.',
+        });
+    }
+    const postId = new ObjectId(req.params.id);
+    try {
+        const comments = await db
+            .getDb()
+            .collection('comments')
+            .find({ postId: postId })
+            .toArray();
+
+        return res.json({ message: 'OK', comments: comments });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Database error',
+        });
+    }
+});
+
+router.post('/posts/:id/comments', async function (req, res) {
+    const postId = new ObjectId(req.params.id);
+    const newComment = {
+        postId: postId,
+        title: req.body.title,
+        text: req.body.text,
+    };
+    const result = await db
+        .getDb()
+        .collection('comments')
+        .insertOne(newComment);
+
+    res.json({ message: 'comment added' });
+});
 
 /**
  * Error handlers
@@ -54,7 +96,7 @@ router.use(function (err, req, res, next) {
 module.exports = function setRoute(route) {
     homeRoute = route;
     routeLinks = {
-        home: `${homeRoute}/`,
+        home: `${homeRoute}`,
         posts: `${homeRoute}/posts`,
         new: `${homeRoute}/new-post`,
     };

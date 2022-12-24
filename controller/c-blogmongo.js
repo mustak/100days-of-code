@@ -79,6 +79,7 @@ exports.get_postDetails = async (req, res, next) => {
             return res.render('blogmongodb/post-detail', {
                 links: routeLinks,
                 post: post,
+                comments: null,
             });
         } else {
             return localError(

@@ -15,6 +15,7 @@ const app = express();
 
 app.use(helmet()); //set security-related HTTP response headers
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
