@@ -31,6 +31,7 @@ function closeDb() {
 }
 
 module.exports = {
+    url,
     openDb,
     getDb,
     closeDb,
