@@ -12,6 +12,7 @@ const routerBlog = require('./routes/route-blog');
 const routerBlogMongodb = require('./routes/route-blogMongodb');
 const routeFileUploads = require('./routes/route-fileuploads');
 const routeAuth = require('./routes/route-auth');
+const routeShop = require('./routes/route-shop');
 
 const PORT = 3000;
 const app = express();
@@ -49,6 +50,7 @@ app.use('/blog', routerBlog('/blog'));
 app.use('/blogmongodb', routerBlogMongodb('/blogmongodb'));
 app.use('/fileuploads/', routeFileUploads);
 app.use('/auth', routeAuth);
+app.use('/shop', routeShop);
 
 app.use(function (req, res, next) {
     res.render('restaurants/404', {
