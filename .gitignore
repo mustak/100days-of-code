@@ -1,8 +1,10 @@
+
 ### Local ###
 node_modules
 .env
 uploads
 public/shop/styles/styles.css
+
 
 ### VisualStudioCode ###
 .vscode/*
