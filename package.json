@@ -1,0 +1,43 @@
+{
+    "name": "100days-of-code",
+    "version": "1.0.0",
+    "description": "",
+    "private": "true",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "devx": "node app.js",
+        "dev": "node -r dotenv/config app.js",
+        "tailwind": "tailwindcss -i ./views/ejs/shop/tailwind/input.css -o ./public/shop/styles/styles.css --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mustak/100days-of-code.git"
+    },
+    "keywords": [],
+    "author": "mustak",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mustak/100days-of-code/issues"
+    },
+    "homepage": "https://github.com/mustak/100days-of-code#readme",
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "connect-mongodb-session": "^3.1.1",
+        "dotenv": "^16.0.1",
+        "ejs": "^3.0.2",
+        "express": "^4.17.3",
+        "express-session": "^1.17.3",
+        "helmet": "^5.0.2",
+        "mongodb": "4.9",
+        "multer": "^1.4.5-lts.1",
+        "mysql2": "^2.3.3"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^6.1.2",
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.23",
+        "nodemon": "^2.0.15",
+        "tailwindcss": "^3.2.4"
+    }
+}

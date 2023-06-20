@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('includes/head', { title: title || 'Home Page' }) %>
+        <link rel="stylesheet" href="/fileuploads/styles/forms.css" />
+        <link rel="stylesheet" href="/fileuploads/styles/users.css" />
+    </head>
+
+    <body>
+        <%- include('includes/header') %>
+        <main>
+            <!-- <h1>Home page</h1>
+            <p>Hooray, this is the homepage.</p> -->
+            <%- include('includes/add-user') %>
+            <%- include('includes/all-users', users) %>
+        </main>
+    </body>
+</html>

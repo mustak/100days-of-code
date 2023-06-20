@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('_head') %>
+        <link rel="stylesheet" href="/restaurants/styles/error.css" />
+    </head>
+
+    <body>
+        <%- include('_header', links); %> <%- include('_side-drawer', links); %>
+        <main>
+            <h1 class="error">A server error occured!</h1>
+            <h2><%= title %></h2>
+            <p>Unfortunately, we weren't able to complete your request.</p>
+        </main>
+    </body>
+</html>

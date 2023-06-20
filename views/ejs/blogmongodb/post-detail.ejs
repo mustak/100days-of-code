@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('includes/head', { title: 'MHY::100 days' }) %>
+        <link rel="stylesheet" href="/blog/styles/posts.css" />
+        <script src="/blog/scripts/comments.js" type='' defer></script>
+    </head>
+
+    <body>
+        <%- include('includes/header', links) %>
+        <main id="post-detail">
+
+            <h1><%= post.title %></h1>
+
+            <section id="post-meta">
+                <address>
+                    <a href="<%= `mailto: ${post.author.email}?subject=${post.title}` %>"><%=post.author.name%></a>
+                </address>
+                <time datetime='<%=post.dateAdded.toISOString() %>'><%= post.dateAdded.toLocaleDateString('en-UK',{weekday:'long', year:'numeric',month:'long', day:'numeric'}) %></time>
+            </section>
+
+            <hr />
+
+            <section>
+                <p id="body"><%= post.content %></p>
+            </section>
+
+            <section id="comments">
+                <p>
+                  This post might have comments. You can load them if you want to view
+                  them.
+                </p>
+                  <button id='load-comments-btn' data-postid="<%= post._id %>" class="btn btn-alt">Load Comments</button>
+              </section>
+              <section id="comments-form">
+                <h2>Leave a comment</h2>
+                <form id='commentsForm' data-postid="<%= post._id %>">
+                  <div class="form-control">
+                    <label for="title">Comment title</label>
+                    <input type="text" id="title" name="title" required />
+                  </div>
+                  <div class="form-control">
+                    <label for="text">Your comment</label>
+                    <textarea name="text" id="text" rows="3" required></textarea>
+                  </div>
+                  <button class="btn">Save Comment</button>
+                </form>
+              </section>
+        </main>
+    </body>
+</html>

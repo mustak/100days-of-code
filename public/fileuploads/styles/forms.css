@@ -1,0 +1,42 @@
+.container {
+    /* max-width: 500px; */
+    margin: 25px auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.container h1 {
+    text-align: center;
+    color: white;
+}
+form#adduser {
+    background-color: white;
+    padding: 20px;
+}
+form .input-group {
+    margin-bottom: 15px;
+}
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgb(105 6 108);
+    font-size: 0.9rem;
+}
+form input {
+    padding: 10px 15px;
+    width: 100%;
+    border: 1px solid #ccc;
+    color: #3f1840cf;
+}
+form input::placeholder {
+    color: rgb(105 6 108);
+}
+.submit-btn {
+    width: 100%;
+    border: none;
+    background: #560556;
+    font-size: 18px;
+    color: white;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+}
